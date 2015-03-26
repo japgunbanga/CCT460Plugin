@@ -1,0 +1,19 @@
+.info{
+	
+	background: -webkit-linear-gradient(90deg, #D1FFFF 10%, #75FFFF 90%); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient(90deg, #D1FFFF 10%, #75FFFF 90%); /* FF3.6+ */
+	background:     -ms-linear-gradient(90deg, #D1FFFF 10%, #75FFFF 90%); /* IE10 */
+	background:      -o-linear-gradient(90deg, #D1FFFF 10%, #75FFFF 90%); /* Opera 11.10+ */
+	background:         linear-gradient(90deg, #D1FFFF 10%, #75FFFF 90%); /* W3C */
+	color:brown;
+	margin:30px;
+	padding:15px;
+	border:4px solid brown;
+	border-radius:5px;
+	box-shadow:3px 3px 5px #B5D7B5;
+}
+
+.info img{
+	box-shadow:4px 4px 5px brown;
+	border-radius:5px;
+}
