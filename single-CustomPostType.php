@@ -20,7 +20,7 @@ get_header(); ?>
  
                 <!-- This line of code displays featured image in right-aligned floating div -->
 				<br /> <br />
-                <div style="float: right; margin: 10px">
+                <div style="float: right; margin: 10px;">
                     <?php the_post_thumbnail( array( 100, 100 ) ); ?>
                 </div>
  
