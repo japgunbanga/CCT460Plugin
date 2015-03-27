@@ -5,6 +5,112 @@ Description: Declares a plugin that will create a custom post type displaying ca
 Version: 1.0
 */
 
+
+
+
+
+
+
+/*
+function gr_cake_add_admin_menu(  ) { 
+
+	add_menu_page( 'A Cake Plugin', 'An Options Plugin', 'manage_options', 'an_options_plugin', 'a_cake_plugin_options_page', 'dashicons-hammer', 66 );
+
+}
+
+
+function gr_cake_settings_init(  ) { 
+
+	register_setting( 'plugin_page', 'gr_cake_settings' );
+	
+	add_settings_section(
+		'gr_cake_plugin_page_section', 
+		__( 'Description for the section', 'gabriela' ), 
+		'gr_cake_settings_section_callback', 
+		'plugin_page'
+	);
+
+	
+
+	
+
+	
+
+	add_settings_field( 
+		'gr_cake_select_field_4', 
+		__( 'Choose from the dropdown', 'gabriela' ), 
+		'gr_cake_select_field_4_render', 
+		'plugin_page', 
+		'gr_cake_plugin_page_section' 
+	);
+
+
+}
+
+
+
+function gr_cake_select_field_4_render() { 
+	$options = get_option( 'gr_cake_settings' );
+	?>
+	<select name="gr_cake_settings[gr_cake_select_field_4]">
+		<option value="white" <?php if (isset($options['gr_cake_select_field_4'])) selected( $options['gr_cake_select_field_4'], 1 ); ?>>White Background</option>
+		<option value="pink" <?php if (isset($options['gr_cake_select_field_4'])) selected( $options['gr_cake_select_field_4'], 2 ); ?>>Pink Background</option>
+	</select>
+	<?php echo $options['gr_cake_select_field_4'];?>
+<?php
+}
+
+
+function gr_cake_settings_section_callback() { 
+	echo __( 'More of a description and detail about the section.', 'gabriela' );
+}
+
+
+function a_cake_plugin_options_page() { 
+	?>
+	<form action="options.php" method="post">
+		
+		<h2>A Cake Plugin</h2>
+		
+		<?php
+		settings_fields( 'plugin_page' );
+		do_settings_sections( 'plugin_page' );
+		submit_button();
+		?>
+		
+	</form>
+	<?php
+
+}
+
+add_action( 'admin_menu', 'gr_cake_add_admin_menu' );
+add_action( 'admin_init', 'gr_cake_settings_init' );	
+
+
+
+function a_cake_plugin_callit(){
+	$options = get_option( 'gr_cake_settings' );
+	echo '<p' . ' style="color: ' . $options['gr_cake_select_field_4'] . ';">' . 'Select: ' . $options['gr_cake_select_field_4'] . '</p>';
+}	
+
+
+// Figure out how to have a filter / action hook only specific to the products page and change the_content below with that.
+// If that doesn't work, call the function a_cake_plugin_callit on the products page.
+add_filter('the_content', 'a_cake_plugin_callit');	
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 // making custom post type
 function my_custom_post_cakes() {
 
@@ -189,15 +295,24 @@ function include_template_function( $template_path ) {
             // otherwise it serves the file from the plugin
             if ( $theme_file = locate_template( array ( 'single-CustomPostType.php' ) ) ) {
                 $template_path = $theme_file;
+               
+                
             } else {
                 $template_path = plugin_dir_path( __FILE__ ) . '/single-CustomPostType.php';
+                
             }
         }
     }
+    
     return $template_path;
 }
 
 // This line of code is used for making shortcode to access cake links using shortcode
+
+
+
+
+
 
 add_shortcode( 'cakes', 'tcb_sc_custom_posts' );
 function tcb_sc_custom_posts( $atts ){
@@ -240,4 +355,5 @@ function tcb_sc_custom_posts( $atts ){
 
   return $return;
 }
+
 ?>
